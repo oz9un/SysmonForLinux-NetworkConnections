@@ -25,11 +25,14 @@ class ruleGroupCreator:
 			self.newConfigLines.append("".join(base_filter))
 		
 		temp_file = open("tempconfig.xml", 'a+')
+		temp_file.write('<RuleGroup name="autoCreated" groupRelation="or">\n')
 		temp_file.write('<NetworkConnect onmatch="include">\n')
 		for bannedIp in self.newConfigLines:
 			temp_file.write(bannedIp)
 			temp_file.write('\n')
-		temp_file.write('</NetworkConnect>')
+		temp_file.write('</NetworkConnect>\n')
+		temp_file.write('</RuleGroup>\n')
+
 
 
 	def finalConfigFile(self):
